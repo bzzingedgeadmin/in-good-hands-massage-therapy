@@ -9,7 +9,7 @@ const SERVICES = [
     name: "Deep Tissue & Neuromuscular Therapy",
     prices: "60 Min: $85 | 90 Min: $120",
     desc: "Targeted firm pressure releasing chronic muscle tension, knots, and soft tissue tightness for long-term relief.",
-    img: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const SERVICES = [
     name: "Swedish Relaxation Massage",
     prices: "60 Min: $75 | 90 Min: $105",
     desc: "Gentle long strokes, kneading, and rhythmic motion designed to soothe stress, enhance circulation, and induce deep calm.",
-    img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 3,
@@ -25,7 +25,7 @@ const SERVICES = [
     name: "Warming Hot Stone Therapy",
     prices: "60 Min: $95 | 90 Min: $130",
     desc: "Smooth heated basalt stones melted over tight muscles to relieve deep-seated tension and restore tranquility.",
-    img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 4,
@@ -33,7 +33,7 @@ const SERVICES = [
     name: "Sports Performance & Recovery",
     prices: "60 Min: $85 | 90 Min: $120",
     desc: "Assisted stretching, cross-fiber friction, and joint mobilization tailored for athletes and active individuals.",
-    img: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 5,
@@ -41,7 +41,7 @@ const SERVICES = [
     name: "Nurturing Prenatal Massage",
     prices: "60 Min: $80 | 90 Min: $115",
     desc: "Custom supportive side-lying cushion setup easing lower back pressure, hip fatigue, and fluid retention.",
-    img: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80"
   },
   {
     id: 6,
@@ -49,17 +49,17 @@ const SERVICES = [
     name: "Aromatherapy & Botanical Oils",
     prices: "+$15 Add-On",
     desc: "Custom therapeutic essential oil blends (Lavender, Eucalyptus, Bergamot) infused into your session.",
-    img: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80"
+    img: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80"
   }
 ];
 
 const AMBIANCE_GALLERY = [
-  { url: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80", title: "Tranquil Treatment Room" },
-  { url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=600&q=80", title: "Volcanic Hot Stone Therapy" },
-  { url: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=600&q=80", title: "Organic Essential Botanical Oils" },
-  { url: "https://images.unsplash.com/photo-1591343393582-fc440767454d?auto=format&fit=crop&w=600&q=80", title: "Soothing Massage Studio Ambiance" },
-  { url: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=600&q=80", title: "Zen Wellness & Relaxation" },
-  { url: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=600&q=80", title: "Therapeutic Muscle Care" }
+  { url: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80", title: "Tranquil Treatment Room", sub: "Private & Calming Sanctuary" },
+  { url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80", title: "Volcanic Hot Stone Setup", sub: "Deep Heat Muscle Therapy" },
+  { url: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80", title: "Organic Botanical Oils", sub: "100% Pure Essential Extracts" },
+  { url: "https://images.unsplash.com/photo-1591343393582-fc440767454d?auto=format&fit=crop&w=800&q=80", title: "Soothing Studio Environment", sub: "Warm Lighting & Soundscapes" },
+  { url: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80", title: "Zen Wellness Essentials", sub: "Natural Spa Care" },
+  { url: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=800&q=80", title: "Therapeutic Muscle Care", sub: "Licensed Clinical Technique" }
 ];
 
 export default function App() {
@@ -173,7 +173,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Ambiance Gallery */}
+      {/* Ambiance Gallery - Clean Cards */}
       <section id="gallery" className="section" style={{ background: '#F1F4F2' }}>
         <div className="container">
           <div className="section-title">
@@ -183,8 +183,13 @@ export default function App() {
           <div className="gallery-grid">
             {AMBIANCE_GALLERY.map((g, idx) => (
               <div key={idx} className="gallery-card">
-                <img src={g.url} alt={g.title} />
-                <div className="gallery-caption">{g.title}</div>
+                <div className="gallery-img-wrapper">
+                  <img src={g.url} alt={g.title} />
+                </div>
+                <div className="gallery-body">
+                  <div className="gallery-title">{g.title}</div>
+                  <div className="gallery-subtitle">{g.sub}</div>
+                </div>
               </div>
             ))}
           </div>

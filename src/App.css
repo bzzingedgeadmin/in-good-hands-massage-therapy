@@ -51,8 +51,7 @@ a {
 }
 
 .nav {
-  background: rgba(249, 248, 243, 0.95);
-  backdrop-filter: blur(10px);
+  background: rgba(249, 248, 243, 0.98);
   position: sticky;
   top: 0;
   z-index: 100;
@@ -258,41 +257,59 @@ a {
   flex: 1;
 }
 
-/* Gallery */
+/* Clean Ambiance Gallery Cards - No black overlays! */
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 20px;
+  gap: 24px;
 }
 
 .gallery-card {
-  height: 260px;
+  background: var(--bg-card);
   border-radius: 16px;
   overflow: hidden;
-  position: relative;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  border: 1px solid var(--border-light);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
 }
 
-.gallery-card img {
+.gallery-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(74, 107, 93, 0.12);
+}
+
+.gallery-img-wrapper {
+  height: 230px;
+  overflow: hidden;
+}
+
+.gallery-img-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease;
+  transition: transform 0.4s ease;
 }
 
-.gallery-card:hover img {
-  transform: scale(1.06);
+.gallery-card:hover .gallery-img-wrapper img {
+  transform: scale(1.05);
 }
 
-.gallery-caption {
-  position: absolute;
-  bottom: 0;
-  inset-x: 0;
-  padding: 20px;
-  background: linear-gradient(transparent, rgba(30, 40, 35, 0.85));
-  color: #fff;
+.gallery-body {
+  padding: 18px 22px;
+  background: #FFFFFF;
+}
+
+.gallery-title {
   font-family: var(--font-serif);
-  font-size: 1.2rem;
+  font-size: 1.25rem;
+  color: var(--primary-sage-dark);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.gallery-subtitle {
+  font-size: 0.88rem;
+  color: var(--text-muted);
 }
 
 /* Bio Section */
@@ -358,8 +375,7 @@ a {
 .modal-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(30, 40, 35, 0.7);
-  backdrop-filter: blur(5px);
+  background: rgba(30, 40, 35, 0.75);
   display: flex;
   align-items: center;
   justify-content: center;
