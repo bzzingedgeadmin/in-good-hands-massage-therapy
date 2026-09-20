@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+const FALLBACK_IMG = "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80";
+
 const SERVICE_CATEGORIES = ["Therapeutic Massage", "Specialty Treatments", "Add-On Enhancements"];
 
 const SERVICES = [
@@ -54,12 +56,18 @@ const SERVICES = [
 ];
 
 const AMBIANCE_GALLERY = [
-  { url: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80", title: "Tranquil Treatment Room", sub: "Private & Calming Sanctuary" },
-  { url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=800&q=80", title: "Volcanic Hot Stone Setup", sub: "Deep Heat Muscle Therapy" },
-  { url: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=800&q=80", title: "Organic Botanical Oils", sub: "100% Pure Essential Extracts" },
-  { url: "https://images.unsplash.com/photo-1591343393582-fc440767454d?auto=format&fit=crop&w=800&q=80", title: "Soothing Studio Environment", sub: "Warm Lighting & Soundscapes" },
-  { url: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=800&q=80", title: "Zen Wellness Essentials", sub: "Natural Spa Care" },
-  { url: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=800&q=80", title: "Therapeutic Muscle Care", sub: "Licensed Clinical Technique" }
+  { url: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80", title: "Tranquil Treatment Room", sub: "Private & Calming Sanctuary" },
+  { url: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=1200&q=80", title: "Volcanic Hot Stone Setup", sub: "Deep Heat Muscle Therapy" },
+  { url: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=1200&q=80", title: "Organic Botanical Oils", sub: "100% Pure Essential Extracts" },
+  { url: "https://images.unsplash.com/photo-1591343393582-fc440767454d?auto=format&fit=crop&w=1200&q=80", title: "Soothing Studio Environment", sub: "Warm Lighting & Soundscapes" },
+  { url: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&w=1200&q=80", title: "Zen Wellness Essentials", sub: "Natural Spa Care" },
+  { url: "https://images.unsplash.com/photo-1519823551278-64ac92734fb1?auto=format&fit=crop&w=1200&q=80", title: "Therapeutic Muscle Care", sub: "Licensed Clinical Technique" },
+  { url: "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=1200&q=80", title: "Swedish Relaxation Therapy", sub: "Stress Reduction Session" },
+  { url: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=1200&q=80", title: "Sports Recovery & Stretching", sub: "Flexibility & Joint Relief" },
+  { url: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80", title: "Prenatal Comfort Setup", sub: "Maternal Wellness" },
+  { url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80", title: "Licensed Massage Practitioner", sub: "10+ Years Experience" },
+  { url: "https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=1200&q=80", title: "Grand Ledge Clinic Studio", sub: "Downtown Location" },
+  { url: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80", title: "Restorative Bodywork", sub: "Custom Intake & Care" }
 ];
 
 export default function App() {
@@ -69,6 +77,22 @@ export default function App() {
   const [duration, setDuration] = useState("60 Minutes");
   const [toastMessage, setToastMessage] = useState("");
   const [form, setForm] = useState({ name: "", phone: "", date: "", time: "10:00 AM", notes: "" });
+
+  // Lightbox Carousel State
+  const [lightboxIndex, setLightboxIndex] = useState(null);
+
+  const openLightbox = (index) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+
+  const nextLightboxImage = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev + 1) % AMBIANCE_GALLERY.length);
+  };
+
+  const prevLightboxImage = (e) => {
+    e.stopPropagation();
+    setLightboxIndex((prev) => (prev - 1 + AMBIANCE_GALLERY.length) % AMBIANCE_GALLERY.length);
+  };
 
   const filteredServices = SERVICES.filter(s => s.category === activeCategory);
 
@@ -104,7 +128,7 @@ export default function App() {
           </a>
           <div className="nav-links">
             <a href="#services">Services</a>
-            <a href="#gallery">Ambiance</a>
+            <a href="#gallery">Ambiance ({AMBIANCE_GALLERY.length})</a>
             <a href="#therapist">About Therapist</a>
             <a href="#contact">Contact & Hours</a>
             <button className="btn btn-sage" onClick={() => handleOpenModal()}>Book Session</button>
@@ -130,7 +154,11 @@ export default function App() {
             </div>
           </div>
           <div className="hero-image-wrapper">
-            <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80" alt="Massage Therapy Room" />
+            <img
+              src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=800&q=80"
+              alt="Massage Therapy Room"
+              onError={(e) => { e.target.src = FALLBACK_IMG; }}
+            />
           </div>
         </div>
       </section>
@@ -158,7 +186,11 @@ export default function App() {
           <div className="services-grid">
             {filteredServices.map(service => (
               <div key={service.id} className="service-card">
-                <img src={service.img} alt={service.name} />
+                <img
+                  src={service.img}
+                  alt={service.name}
+                  onError={(e) => { e.target.src = FALLBACK_IMG; }}
+                />
                 <div className="service-content">
                   <h3 className="service-name">{service.name}</h3>
                   <div className="service-prices">{service.prices}</div>
@@ -173,18 +205,23 @@ export default function App() {
         </div>
       </section>
 
-      {/* Ambiance Gallery - Clean Cards */}
+      {/* Ambiance Gallery - Carousel Lightbox Cards */}
       <section id="gallery" className="section" style={{ background: '#F1F4F2' }}>
         <div className="container">
           <div className="section-title">
             <h2>SANCTUARY OF HEALING & AMBIANCE</h2>
-            <p>Designed for comfort, tranquility, and total peace</p>
+            <p>Click any photo to open the interactive full-screen carousel ({AMBIANCE_GALLERY.length} photos)</p>
           </div>
           <div className="gallery-grid">
             {AMBIANCE_GALLERY.map((g, idx) => (
-              <div key={idx} className="gallery-card">
+              <div key={idx} className="gallery-card" onClick={() => openLightbox(idx)}>
                 <div className="gallery-img-wrapper">
-                  <img src={g.url} alt={g.title} />
+                  <img
+                    src={g.url}
+                    alt={g.title}
+                    onError={(e) => { e.target.src = FALLBACK_IMG; }}
+                  />
+                  <span className="expand-badge">🔍 View Carousel</span>
                 </div>
                 <div className="gallery-body">
                   <div className="gallery-title">{g.title}</div>
@@ -200,7 +237,12 @@ export default function App() {
       <section id="therapist" className="section">
         <div className="container">
           <div className="bio-box">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80" alt="Licensed Therapist" className="bio-img" />
+            <img
+              src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
+              alt="Licensed Therapist"
+              className="bio-img"
+              onError={(e) => { e.target.src = FALLBACK_IMG; }}
+            />
             <div className="bio-text">
               <h3>YOU ARE IN GOOD HANDS</h3>
               <p style={{ color: 'var(--text-muted)', marginBottom: '16px' }}>
@@ -259,6 +301,33 @@ export default function App() {
           <p>© 2026 In Good Hands Massage Therapy. 215 N Bridge St, Grand Ledge, MI 48837 | (517) 215-5475</p>
         </div>
       </footer>
+
+      {/* Lightbox Carousel Modal */}
+      {lightboxIndex !== null && (
+        <div className="lightbox-backdrop" onClick={closeLightbox}>
+          <div className="lightbox-content" onClick={(e) => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={closeLightbox}>✕</button>
+            <div className="lightbox-img-box">
+              <button className="lightbox-nav lightbox-prev" onClick={prevLightboxImage}>‹</button>
+              <img
+                src={AMBIANCE_GALLERY[lightboxIndex].url}
+                alt={AMBIANCE_GALLERY[lightboxIndex].title}
+                onError={(e) => { e.target.src = FALLBACK_IMG; }}
+              />
+              <button className="lightbox-nav lightbox-next" onClick={nextLightboxImage}>›</button>
+            </div>
+            <div className="lightbox-footer">
+              <div>
+                <h3 style={{ fontFamily: 'var(--font-serif)', color: 'var(--primary-sage-dark)' }}>{AMBIANCE_GALLERY[lightboxIndex].title}</h3>
+                <p style={{ color: 'var(--text-muted)' }}>{AMBIANCE_GALLERY[lightboxIndex].sub}</p>
+              </div>
+              <div style={{ fontWeight: 600, color: 'var(--primary-sage)' }}>
+                Image {lightboxIndex + 1} of {AMBIANCE_GALLERY.length}
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Booking Modal */}
       {isModalOpen && (
