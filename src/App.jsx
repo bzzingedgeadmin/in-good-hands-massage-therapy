@@ -66,8 +66,8 @@ const AMBIANCE_GALLERY = [
   { url: "https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=1200&q=80", title: "Sports Recovery & Stretching", sub: "Flexibility & Joint Relief" },
   { url: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=1200&q=80", title: "Prenatal Comfort Setup", sub: "Maternal Wellness" },
   { url: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80", title: "Licensed Massage Practitioner", sub: "10+ Years Experience" },
-  { url: "https://images.unsplash.com/photo-1512690459411-b9245aed614b?auto=format&fit=crop&w=1200&q=80", title: "Grand Ledge Clinic Studio", sub: "Downtown Location" },
-  { url: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=1200&q=80", title: "Restorative Bodywork", sub: "Custom Intake & Care" }
+  { url: "https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=1200&q=80", title: "Grand Ledge Clinic Studio", sub: "Downtown Location" },
+  { url: "https://images.unsplash.com/photo-1519824920677-89423480e4b3?auto=format&fit=crop&w=1200&q=80", title: "Restorative Scalp & Neck Care", sub: "Custom Intake & Care" }
 ];
 
 export default function App() {
